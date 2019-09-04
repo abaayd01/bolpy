@@ -25,6 +25,10 @@ class Evaluator:
 
         return Trend.NONE
 
+    @staticmethod
+    def eval_test():
+        return "BUY"
+
     def evaluate_price(self, current_price):
         # upwards trend mode
         # go long when the price hits the moving average, exit when it hits the upper BB

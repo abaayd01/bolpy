@@ -14,6 +14,7 @@
 """The Python implementation of the GRPC helloworld.Greeter server."""
 
 from concurrent import futures
+from bolpy.evaluator import evaluator
 import time
 import logging
 
@@ -28,7 +29,9 @@ _ONE_DAY_IN_SECONDS = 24 * 60 * 60
 
 class PriceEvaluator(bol_pb2_grpc.PriceEvaluatorServicer):
     def EvaluatePrice(self, request, context):
-        return bol_pb2.PriceEvaluationResponse(action="WOW!")
+        print("evaluating price", request, context)
+        response_action = evaluator.Evaluator.eval_test()
+        return bol_pb2.PriceEvaluationResponse(action=response_action)
 
 
 def serve():
