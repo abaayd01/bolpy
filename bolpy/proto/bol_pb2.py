@@ -20,48 +20,10 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='bolproto',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x15\x62olpy/proto/bol.proto\x12\x08\x62olproto\")\n\x05Price\x12\r\n\x05price\x18\x01 \x01(\x02\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\"j\n\x16PriceEvaluationRequest\x12%\n\x0c\x63urrentPrice\x18\x01 \x01(\x0b\x32\x0f.bolproto.Price\x12)\n\x10historicalPrices\x18\x02 \x03(\x0b\x32\x0f.bolproto.Price\")\n\x17PriceEvaluationResponse\x12\x0e\n\x06\x61\x63tion\x18\x01 \x01(\t2h\n\x0ePriceEvaluator\x12V\n\rEvaluatePrice\x12 .bolproto.PriceEvaluationRequest\x1a!.bolproto.PriceEvaluationResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x15\x62olpy/proto/bol.proto\x12\x08\x62olproto\"H\n\x16PriceEvaluationRequest\x12\x14\n\x0c\x63urrentPrice\x18\x01 \x01(\x02\x12\x18\n\x10historicalPrices\x18\x02 \x03(\x02\"\xad\x01\n\x17PriceEvaluationResponse\x12\x0e\n\x06\x61\x63tion\x18\x01 \x01(\t\x12\x17\n\x0f\x65valuationPrice\x18\x02 \x01(\x02\x12\x17\n\x0ftargetExitPrice\x18\x03 \x01(\x02\x12\x15\n\rstopLossPrice\x18\x04 \x01(\x02\x12\x10\n\x08\x62olUpper\x18\x05 \x01(\x02\x12\x10\n\x08\x62olLower\x18\x06 \x01(\x02\x12\x15\n\rmovingAverage\x18\x07 \x01(\x02\x32h\n\x0ePriceEvaluator\x12V\n\rEvaluatePrice\x12 .bolproto.PriceEvaluationRequest\x1a!.bolproto.PriceEvaluationResponse\"\x00\x62\x06proto3')
 )
 
 
-
-
-_PRICE = _descriptor.Descriptor(
-  name='Price',
-  full_name='bolproto.Price',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='price', full_name='bolproto.Price.price', index=0,
-      number=1, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='timestamp', full_name='bolproto.Price.timestamp', index=1,
-      number=2, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=35,
-  serialized_end=76,
-)
 
 
 _PRICEEVALUATIONREQUEST = _descriptor.Descriptor(
@@ -73,14 +35,14 @@ _PRICEEVALUATIONREQUEST = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='currentPrice', full_name='bolproto.PriceEvaluationRequest.currentPrice', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      number=1, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='historicalPrices', full_name='bolproto.PriceEvaluationRequest.historicalPrices', index=1,
-      number=2, type=11, cpp_type=10, label=3,
+      number=2, type=2, cpp_type=6, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -97,8 +59,8 @@ _PRICEEVALUATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=78,
-  serialized_end=184,
+  serialized_start=35,
+  serialized_end=107,
 )
 
 
@@ -116,6 +78,48 @@ _PRICEEVALUATIONRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='evaluationPrice', full_name='bolproto.PriceEvaluationResponse.evaluationPrice', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='targetExitPrice', full_name='bolproto.PriceEvaluationResponse.targetExitPrice', index=2,
+      number=3, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='stopLossPrice', full_name='bolproto.PriceEvaluationResponse.stopLossPrice', index=3,
+      number=4, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='bolUpper', full_name='bolproto.PriceEvaluationResponse.bolUpper', index=4,
+      number=5, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='bolLower', full_name='bolproto.PriceEvaluationResponse.bolLower', index=5,
+      number=6, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='movingAverage', full_name='bolproto.PriceEvaluationResponse.movingAverage', index=6,
+      number=7, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -128,23 +132,13 @@ _PRICEEVALUATIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=186,
-  serialized_end=227,
+  serialized_start=110,
+  serialized_end=283,
 )
 
-_PRICEEVALUATIONREQUEST.fields_by_name['currentPrice'].message_type = _PRICE
-_PRICEEVALUATIONREQUEST.fields_by_name['historicalPrices'].message_type = _PRICE
-DESCRIPTOR.message_types_by_name['Price'] = _PRICE
 DESCRIPTOR.message_types_by_name['PriceEvaluationRequest'] = _PRICEEVALUATIONREQUEST
 DESCRIPTOR.message_types_by_name['PriceEvaluationResponse'] = _PRICEEVALUATIONRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
-Price = _reflection.GeneratedProtocolMessageType('Price', (_message.Message,), {
-  'DESCRIPTOR' : _PRICE,
-  '__module__' : 'bolpy.proto.bol_pb2'
-  # @@protoc_insertion_point(class_scope:bolproto.Price)
-  })
-_sym_db.RegisterMessage(Price)
 
 PriceEvaluationRequest = _reflection.GeneratedProtocolMessageType('PriceEvaluationRequest', (_message.Message,), {
   'DESCRIPTOR' : _PRICEEVALUATIONREQUEST,
@@ -168,8 +162,8 @@ _PRICEEVALUATOR = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=229,
-  serialized_end=333,
+  serialized_start=285,
+  serialized_end=389,
   methods=[
   _descriptor.MethodDescriptor(
     name='EvaluatePrice',
