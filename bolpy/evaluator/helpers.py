@@ -3,7 +3,7 @@ import numpy as np
 
 
 def create_data_frame(price_data):
-    price_df = pd.DataFrame(list(price_data))
+    price_df = pd.DataFrame({'price': price_data})
     price_df = format_data(price_df)
     return price_df
 
