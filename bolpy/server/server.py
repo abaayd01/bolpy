@@ -14,15 +14,12 @@
 """The Python implementation of the GRPC helloworld.Greeter server."""
 
 from concurrent import futures
-from bolpy.evaluator import evaluator
 import time
-import logging
 
 import grpc
 
 from bolpy.proto import bol_pb2_grpc
 
-from bolpy.proto import bol_pb2
 from bolpy.evaluator import evaluator
 
 _ONE_DAY_IN_SECONDS = 24 * 60 * 60
@@ -34,19 +31,16 @@ class PriceEvaluator(bol_pb2_grpc.PriceEvaluatorServicer):
         return e.evaluate_price(request.currentPrice)
 
 
-def serve():
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    bol_pb2_grpc.add_PriceEvaluatorServicer_to_server(PriceEvaluator(), server)
-    server.add_insecure_port('[::]:50051')
-    server.start()
+class Server:
+    @staticmethod
+    def start():
+        server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+        bol_pb2_grpc.add_PriceEvaluatorServicer_to_server(PriceEvaluator(), server)
+        server.add_insecure_port('[::]:50051')
+        server.start()
 
-    try:
-        while True:
-            time.sleep(_ONE_DAY_IN_SECONDS)
-    except KeyboardInterrupt:
-        server.stop(0)
-
-
-if __name__ == '__main__':
-    logging.basicConfig()
-    serve()
+        try:
+            while True:
+                time.sleep(_ONE_DAY_IN_SECONDS)
+        except KeyboardInterrupt:
+            server.stop(0)
