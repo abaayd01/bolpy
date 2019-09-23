@@ -1,0 +1,13 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/bolpy:$BUILD_ID', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/bolpy:$BUILD_ID']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['set', 'image', 'deployment/bolpy', 'bolpy-sha256=gcr.io/$PROJECT_ID/bolpy:$BUILD_ID']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=australia-southeast1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=bolpy-cluster'
+
+images:
+- 'gcr.io/$PROJECT_ID/bolpy:$BUILD_ID'
