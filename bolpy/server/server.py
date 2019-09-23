@@ -27,6 +27,7 @@ _ONE_DAY_IN_SECONDS = 24 * 60 * 60
 
 class PriceEvaluator(bol_pb2_grpc.PriceEvaluatorServicer):
     def EvaluatePrice(self, request, context):
+        print("Evaluating price...")
         e = evaluator.Evaluator(request.historicalPrices)
         return e.evaluate_price(request.currentPrice)
 
